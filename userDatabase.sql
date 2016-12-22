@@ -1,8 +1,9 @@
-
-
 SELECT
 	identity,
-	STRING_AGG(value, ",") AS value,
-	SUM(num) AS num
-FROM `userdata.groupedIdAppUserData`
-GROUP BY identity
+	appTable.apps AS apps,
+	iabTable.iabs AS iabs
+FROM
+	`userdata.groupedIdAppUserData` AS appTable
+FULL JOIN
+	`userdata.groupedIdIabUserData` AS iabTable
+ON appTable.identity = iabTable.identity
