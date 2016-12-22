@@ -18,7 +18,7 @@ WITH
 	)
 SELECT
 	identity,
-	STRING_AGG(value, ",") AS value,
+	STRING_AGG(value, ",") AS apps,
 	SUM(num) AS num
 FROM groupedIdAppUserData
 GROUP BY identity
