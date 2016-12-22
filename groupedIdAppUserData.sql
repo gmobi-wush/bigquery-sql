@@ -16,4 +16,9 @@ WITH
 		FROM expandedUserData
 		GROUP BY identity, app
 	)
-SELECT * FROM groupedIdAppUserData
+SELECT
+	identity,
+	STRING_AGG(value, ",") AS value,
+	SUM(num) AS num
+FROM groupedIdAppUserData
+GROUP BY identity
