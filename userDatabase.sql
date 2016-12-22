@@ -3,6 +3,7 @@ joinTable AS (
 	SELECT
 		appTable.identity AS identity1,
 		iabTable.identity AS identity2,
+		appTable.num AS num,
 		appTable.apps AS apps,
 		iabTable.iabs AS iabs
 	FROM
@@ -12,12 +13,12 @@ joinTable AS (
 	ON appTable.identity = iabTable.identity
 ),
 tb1 AS (
-	SELECT identity1 AS identity, apps, iabs
+	SELECT identity1 AS identity, num, apps, iabs
 	FROM joinTable
 	WHERE identity1 IS NOT NULL
 ),
 tb2 AS (
-	SELECT identity2 AS identity, apps, iabs 
+	SELECT identity2 AS identity, num, apps, iabs 
 	FROM joinTable
 	WHERE identity1 IS NULL
 )
