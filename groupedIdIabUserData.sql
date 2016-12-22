@@ -9,6 +9,6 @@ WITH
 	)
 SELECT
   identity,
-  STRING_AGG(DISTINCT iab)
+  STRING_AGG(DISTINCT iab) AS iab
 FROM expandedUserData
 GROUP BY identity
